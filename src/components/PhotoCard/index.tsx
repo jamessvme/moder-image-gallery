@@ -19,13 +19,21 @@ const PhotoCard = ({photo}: {photo: Photo}) => {
 
     const { id, urls, description, user, likes} = photo;
     const [isfavorite, setIsFavorite] = useState(false);
-    
+    const [ present ] = useIonToast();
     const getFavorites = async (): Promise<Photo[]> => {
         const favorites = await store.get("favorites");
 
         return favorites || [];
     }
 
+    const presentToast = (message: string ) => {
+        present({
+            message,
+            duration: 1000,
+            animated: true,
+            position: 'top'
+        })
+    }
     const checkFavorite = async () => {
         const favorites = await getFavorites();
 
@@ -52,6 +60,7 @@ const PhotoCard = ({photo}: {photo: Photo}) => {
         } else {
           addToFavorites(photo);
         }
+        presentToast(isfavorite ? "Removed from favorites" : "Added to favorites");
     };
 
     useEffect(() => {
