@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { IonCard, IonCol, IonContent, IonGrid, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import { IonCard, IonCol, IonContent, IonGrid, IonHeader, IonPage, IonRow, IonTitle, IonToolbar } from '@ionic/react';
 import ExploreContainer from '../components/ExploreContainer';
 import './Tab1.css';
 import { getPhotos } from '../services/api';
@@ -27,17 +27,20 @@ const Tab1: React.FC = () => {
       <IonContent fullscreen>
         <div className='gallery'>
           <IonGrid className='photo-list'>
-            {photos.map(photo => (
-              <IonCol 
-                sizeXs='12'
-                sizeMd='6'
-                sizeXl='4'
-                className='photo-list-item'
-                key={photo.id}
-              >
-                <PhotoCard photo={photo} />
-              </IonCol>
-            ))}
+              <IonRow>
+                {photos.map(photo => (
+                  <IonCol 
+                    sizeXs='12'
+                    sizeMd='6'
+                    sizeXl='4'
+                    size='4'
+                    className='photo-list-item'
+                    key={photo.id}
+                  >
+                    <PhotoCard photo={photo} />
+                  </IonCol>
+                ))}
+              </IonRow>
           </IonGrid>
 
         </div>
