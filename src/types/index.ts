@@ -4,6 +4,8 @@ export interface Photo {
         regular: string
     },
     description: string,
-    user: string,
+    user: {
+        username: string
+    },
     likes: number
 }
