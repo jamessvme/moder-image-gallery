@@ -1,6 +1,8 @@
 export interface Photo {
     id: string,
-    urls: string,
+    urls: {
+        regular: string
+    },
     description: string,
     user: string,
     likes: number
