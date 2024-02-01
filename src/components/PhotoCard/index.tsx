@@ -48,3 +48,5 @@ const PhotoCard = ({photo}: {photo: Photo}) => {
         </IonCard>
     )
 }
+
+export default PhotoCard;
